@@ -7,10 +7,9 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.myapplication.R;
+import com.example.myapplication.ui.Utils.ButtonAnimationUtil; // Importe a classe de animação
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,6 +25,13 @@ public class Home3Activity extends AppCompatActivity {
         setContentView(R.layout.activity_home3);
 
         Button createNewServiceButton = findViewById(R.id.btn_cadastrar_servico);
+
+        ButtonAnimationUtil.setAnimation(
+                createNewServiceButton,
+                R.anim.button,
+                R.color.success,
+                R.color.background_color_btn
+        );
 
         createNewServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="app_title">Olá Seja Bem Vindo!</string>
+    <string name="app_title">Olá, Seja Bem Vindo!</string>
     <string name="app_email">Nome de Usuário</string>
     <string name="app_password">Senha</string>
     <string name="app_entrar">ENTRAR</string>
@@ -52,7 +52,7 @@
     <!--    recursos da pagian HOME -->
 
     <string name="app_home_title">Serviços Disponíveis</string>
-    <string name="app_home_registrar">Cadastrar Novo Serviço</string>
+    <string name="app_home_registrar">Cadastrar Serviço</string>
     <string name="app_home_pendentes">Serviços pendentes</string>
     <string name="app_home_terminados">Serviços finalizados</string>
     <string name="app_home_retirado">Retirada</string>

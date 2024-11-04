@@ -1,6 +1,7 @@
 package com.example.myapplication.ui;
 
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.myapplication.R;
 import com.example.myapplication.data.repositories.ConsumerRepository;
 import com.example.myapplication.service.ConsumerService.ConsumerService;
+import com.example.myapplication.ui.Utils.ButtonAnimationUtil;
 import com.example.myapplication.ui.Utils.UiUtils;
 
 import java.util.concurrent.ExecutorService;
@@ -53,6 +55,14 @@ public class newService extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ButtonAnimationUtil.setAnimation(
+                registerButton,
+                R.anim.button,
+                R.color.success, // cor ao pressionar
+                R.color.background_color_btn  // cor normal
+        );
+
 
         Button cancelButton = findViewById(R.id.buttonCancelar);
         cancelButton.setOnClickListener(new View.OnClickListener() {
