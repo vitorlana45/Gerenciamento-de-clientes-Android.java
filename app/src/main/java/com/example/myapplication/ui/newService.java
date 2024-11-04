@@ -17,11 +17,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
-import com.example.myapplication.data.model.entities.Consumer;
 import com.example.myapplication.data.repositories.ConsumerRepository;
+import com.example.myapplication.service.ConsumerService.ConsumerService;
+import com.example.myapplication.ui.Utils.UiUtils;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,9 +29,11 @@ public class newService extends AppCompatActivity {
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
-    private EditText textInputEditText;
-    private EditText textInputEditText2;
-    private EditText textInputEditText3;
+    private EditText clientName;
+    private EditText equipment;
+    private EditText telephone;
+
+    private ConsumerService consumerService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,12 @@ public class newService extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_new_service);
 
-        textInputEditText = findViewById(R.id.textInputEditText);
-        textInputEditText2 = findViewById(R.id.textInputEditText2);
-        textInputEditText3 = findViewById(R.id.textInputEditText3);
-        Button buttonCadastrar = findViewById(R.id.buttonCadastrar);
-
+        clientName = findViewById(R.id.textInputEditText);
+        equipment = findViewById(R.id.textInputEditText2);
+        telephone = findViewById(R.id.textInputEditText3);
+        Button registerButton = findViewById(R.id.buttonCadastrar);
         ConsumerRepository consumerRepository = new ConsumerRepository(this);
+        consumerService = new ConsumerService(consumerRepository);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -53,8 +54,8 @@ public class newService extends AppCompatActivity {
             return insets;
         });
 
-        Button buttonCancelar = findViewById(R.id.buttonCancelar);
-        buttonCancelar.setOnClickListener(new View.OnClickListener() {
+        Button cancelButton = findViewById(R.id.buttonCancelar);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(newService.this, Home3Activity.class);
@@ -63,28 +64,26 @@ public class newService extends AppCompatActivity {
             }
         });
 
-        buttonCadastrar.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 executor.execute(() -> {
                     try {
-                        String nomeCliente = textInputEditText.getText().toString();
-                        String equipamento = textInputEditText3.getText().toString();
-                        String telefoneCliente = textInputEditText2.getText().toString();
+                        String strClientName = clientName.getText().toString();
+                        String strEquipment = equipment.getText().toString();
+                        String strTelephone = telephone.getText().toString();
 
-                        boolean anyFieldIsEmpty = nomeCliente.isEmpty() || equipamento.isEmpty() || telefoneCliente.isEmpty();
+                        boolean anyFieldIsEmpty = strClientName.isEmpty() || strEquipment.isEmpty() || strTelephone.isEmpty();
 
                         if (anyFieldIsEmpty) {
                             mainHandler.post(() -> {
                                 Toast.makeText(newService.this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
                             });
                         } else {
-                            long dateMillis = System.currentTimeMillis(); // Obtenha a data atual em milissegundos
-                            Log.d("InsertDebug", "Iniciando a inserção com dateMillis: " + dateMillis);
-                            long id = consumerRepository.insert(new Consumer(nomeCliente, equipamento, telefoneCliente, dateMillis));
-                            Log.d("InsertDebug", "ID retornado da inserção: " + id);
+                            consumerService.registerNewConsumer(strClientName, strEquipment, strTelephone);
                             mainHandler.post(() -> {
-                                Toast.makeText(newService.this, "Serviço cadastrado com sucesso! ID: " + id, Toast.LENGTH_SHORT).show();
+                                UiUtils.clearFields(clientName, equipment, telephone);
+                                Toast.makeText(newService.this, "Serviço cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                             });
                         }
                     } catch (Exception e) {
