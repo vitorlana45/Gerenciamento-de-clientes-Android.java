@@ -56,15 +56,16 @@ public class newService extends AppCompatActivity {
             return insets;
         });
 
-        ButtonAnimationUtil.setAnimation(
-                registerButton,
-                R.anim.button,
-                R.color.success, // cor ao pressionar
-                R.color.background_color_btn  // cor normal
-        );
 
 
         Button cancelButton = findViewById(R.id.buttonCancelar);
+
+        ButtonAnimationUtil.setAnimation(
+                cancelButton,
+                R.anim.button,
+                R.color.warning, // cor ao pressionar
+                R.color.error  // cor normal
+        );
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +75,14 @@ public class newService extends AppCompatActivity {
             }
         });
 
+        ButtonAnimationUtil.setAnimation(
+                registerButton,
+                R.anim.button,
+                R.color.success, // cor ao pressionar
+                R.color.background_color_btn  // cor normal
+        );
         registerButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 executor.execute(() -> {
