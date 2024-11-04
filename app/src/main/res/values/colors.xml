@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Cores base -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Cores principais -->
+    <color name="background_color">#0F172A</color> <!-- Azul escuro mais profundo para fundo -->
+    <color name="surface_color">#1E293B</color> <!-- Azul escuro para superfícies -->
+    <color name="primary">#3B82F6</color> <!-- Azul vibrante para elementos principais -->
+    <color name="primary_variant">#2563EB</color> <!-- Azul mais escuro para variações -->
+
+    <!-- Cores de texto -->
+    <color name="text_color">#E2E8F0</color> <!-- Cinza claro para texto principal -->
+    <color name="text_color_secondary">#94A3B8</color> <!-- Cinza médio para texto secundário -->
+    <color name="text_color_hint">#64748B</color> <!-- Cinza escuro para hints -->
+
+    <!-- Cores de botões -->
+    <color name="background_color_btn">#2563EB</color> <!-- Azul para botões -->
+    <color name="background_color_btn_pressed">#1D4ED8</color> <!-- Azul mais escuro para botões pressionados -->
+    <color name="background_color_btn_border">#475569</color> <!-- Cinza azulado para bordas -->
+
+    <!-- Cores de destaque -->
+    <color name="accent">#38BDF8</color> <!-- Azul claro para destaques -->
+    <color name="error">#EF4444</color> <!-- Vermelho para erros -->
+    <color name="success">#22C55E</color> <!-- Verde para sucesso -->
+    <color name="warning">#F59E0B</color> <!-- Laranja para avisos -->
+</resources>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background_color"
+    android:id="@+id/main">
+
+    <!-- Logo ImageView at the top -->
+    <ImageView
+        android:id="@+id/my_image_view"
+        android:layout_width="169dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/app_home_description_logo"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/logo_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Title TextView below Image -->
+    <TextView
+        android:id="@+id/text_view_btn_servicos_disponiveis"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="16dp"
+        android:text="@string/app_home_title"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_image_view" />
+
+    <!-- First row of buttons: Cadastrar (left) and Serviços Pendentes (right) -->
+
+    <!-- Second row of buttons: Terminados Left and Terminados Right -->
+
+    <Button
+        android:id="@+id/btn_cadastrar_servico"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="96dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/background_color_btn"
+        android:padding="10dp"
+        android:text="@string/app_home_registrar"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_servicos_pendentes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_btn_servicos_disponiveis" />
+
+    <Button
+        android:id="@+id/btn_servicos_pendentes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/background_color_btn"
+        android:padding="10dp"
+        android:text="@string/app_home_pendentes"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_cadastrar_servico"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_btn_servicos_disponiveis" />
+
+    <Button
+        android:id="@+id/btn_terminados_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/background_color_btn"
+        android:padding="10dp"
+        android:text="@string/app_home_terminados"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_terminados_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cadastrar_servico" />
+
+    <Button
+        android:id="@+id/btn_terminados_right"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/background_color_btn"
+        android:padding="10dp"
+        android:text="@string/app_home_terminados"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_terminados_left"
+        app:layout_constraintTop_toBottomOf="@+id/btn_cadastrar_servico" />
+
+    <!-- Garantia button occupying the entire width below the other buttons -->
+    <Button
+        android:id="@+id/btn_garantia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/button_background"
+        app:backgroundTint="@color/background_color_btn"
+        android:padding="10dp"
+        android:text="@string/app_home_garantia"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_terminados_left" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
