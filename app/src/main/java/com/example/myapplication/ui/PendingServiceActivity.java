@@ -6,6 +6,8 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.FinishServiceActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.adpter.ConsumerAdapter;
 import com.example.myapplication.data.model.entities.Consumer;
@@ -38,6 +41,8 @@ public class PendingServiceActivity extends AppCompatActivity {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler();
     private ConsumerAdapter consumerAdapter;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +64,6 @@ public class PendingServiceActivity extends AppCompatActivity {
             loadData();
         }
     }
-
     private void applyInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

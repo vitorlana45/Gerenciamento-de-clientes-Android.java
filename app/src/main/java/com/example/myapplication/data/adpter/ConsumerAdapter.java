@@ -1,6 +1,9 @@
 package com.example.myapplication.data.adpter;
 
+import static com.example.myapplication.ui.Utils.UiUtils.convertDate;
+
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,9 +11,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.FinishServiceActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.model.entities.Consumer;
 import com.example.myapplication.databinding.ServiceItemBinding;
+import com.example.myapplication.ui.Utils.ButtonAnimationUtil;
+import com.example.myapplication.ui.Utils.UiUtils;
 
 import java.util.ArrayList;
 
@@ -29,22 +35,29 @@ public class ConsumerAdapter extends RecyclerView.Adapter<ConsumerAdapter.Servic
     public ServiceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ServiceItemBinding listItemBinding;
         listItemBinding = ServiceItemBinding.inflate(LayoutInflater.from(context), parent, false);
+
         return new ServiceViewHolder(listItemBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ServiceViewHolder holder, int position) {
         Consumer consumer = consumerList.get(position);
-        holder.binding.txtClientName.setText(consumer.getName());
-        holder.binding.txtDescription.setText(consumer.getEquipment());
+        holder.binding.txtClientName.setText("Cliente: " + consumer.getName());
+        holder.binding.txtEquipament.setText("Equipamento: " + consumer.getEquipment());
+        holder.binding.txtContactNumber.setText("Contato: " + consumer.getContactNumber());
+        holder.binding.txtCreatedAt.setText("Entrada: " + convertDate(consumer.getCreatedAt()));
 
-        // Check if the photo path is valid before setting the image
         if (consumer.getPhotoPath() != null && !consumer.getPhotoPath().isEmpty()) {
             holder.binding.imgService.setImageURI(Uri.parse(consumer.getPhotoPath()));
         } else {
-            // Set a placeholder image if the path is null or empty
             holder.binding.imgService.setImageResource(R.mipmap.logo_2);
         }
+
+
+        holder.binding.btnConclude.setOnClickListener(v -> {
+            Intent intent = new Intent(context, FinishServiceActivity.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override
