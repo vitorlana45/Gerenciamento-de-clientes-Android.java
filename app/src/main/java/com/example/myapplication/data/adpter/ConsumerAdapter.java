@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.R;
 import com.example.myapplication.data.model.entities.Consumer;
 import com.example.myapplication.databinding.ServiceItemBinding;
 
@@ -37,9 +38,12 @@ public class ConsumerAdapter extends RecyclerView.Adapter<ConsumerAdapter.Servic
         holder.binding.txtClientName.setText(consumer.getName());
         holder.binding.txtDescription.setText(consumer.getEquipment());
 
-        // Load the photo from the path
-        if (consumer.getPhotoPath() != null) {
+        // Check if the photo path is valid before setting the image
+        if (consumer.getPhotoPath() != null && !consumer.getPhotoPath().isEmpty()) {
             holder.binding.imgService.setImageURI(Uri.parse(consumer.getPhotoPath()));
+        } else {
+            // Set a placeholder image if the path is null or empty
+            holder.binding.imgService.setImageResource(R.mipmap.logo_2);
         }
     }
 
