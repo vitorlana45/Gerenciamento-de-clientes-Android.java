@@ -13,16 +13,19 @@ public class Consumer {
     private String name;
     private String equipment;
     private String contactNumber;
-    private long dateInMillis;
+    private long createdAt;
+    private long exitAt;
     private String photoPath;
+
+
     public Consumer() { }
 
     @Ignore
-    public Consumer(String name, String equipment, String contactNumber, long dateInMillis, String photoPath) {
+    public Consumer(String name, String equipment, String contactNumber, long createdAt, String photoPath) {
         this.name = name;
         this.equipment = equipment;
         this.contactNumber = contactNumber;
-        this.dateInMillis = dateInMillis;
+        this.createdAt = createdAt;
         this.photoPath = photoPath;
     }
 
@@ -39,10 +42,14 @@ public class Consumer {
     public String getContactNumber() { return contactNumber; }
     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
 
-    public long getDateInMillis() { return dateInMillis; }
-    public void setDateInMillis(long dateInMillis) { this.dateInMillis = dateInMillis; }
+    public long getCreatedAt() { return createdAt; }
+    public void setCreatedAt(long dateInMillis) { this.createdAt = dateInMillis; }
+
+    public long getExitAt() { return exitAt; }
+
+    public void setExitAt(long exitAt) { this.exitAt = exitAt;}
 
     public String getPhotoPath() { return photoPath; }
 
-    public void setPhotoPath(String photoPath) {this.photoPath = photoPath;}
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath;}
 }

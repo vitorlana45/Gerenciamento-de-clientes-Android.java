@@ -13,10 +13,10 @@ public class ConsumerService {
         this.consumerRepository = consumerRepository;
     }
 
-    public void registerNewConsumer(String name, String equipment, String phone) {
+    public void registerNewConsumer(String name, String equipment, String phone, String photoPath) {
         long dateMillis = System.currentTimeMillis();
         Log.d("InsertDebug", "Iniciando a inserção com dateMillis: " + dateMillis);
-        long id = consumerRepository.insert(new Consumer(name, equipment, phone, dateMillis, "/storage/emulated/0/Pictures/1629780000000.jpg"));
+        long id = consumerRepository.insert(new Consumer(name, equipment, phone, dateMillis, photoPath));
         Log.d("InsertDebug", "ID retornado da inserção: " + id);
     }
 }

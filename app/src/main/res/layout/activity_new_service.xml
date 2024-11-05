@@ -43,10 +43,9 @@
         android:rowCount="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2"
-        app:layout_constraintVertical_bias="0.33">
+        app:layout_constraintTop_toBottomOf="@+id/buttonSelectImage">
 
         <Button
             android:id="@+id/buttonCadastrar"
@@ -129,6 +128,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/textSelectionImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Adicionar Imagem:"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+
+    <Button
+        android:id="@+id/buttonSelectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/background_color_btn"
+        android:text="Selecionar"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSelectionImg" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText"

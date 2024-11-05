@@ -1,10 +1,12 @@
 package com.example.myapplication.ui;
 
 import android.content.Intent;
-import android.net.wifi.hotspot2.pps.HomeSp;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class newService extends AppCompatActivity {
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private String selectedImagePath;
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -55,8 +60,6 @@ public class newService extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
 
         Button cancelButton = findViewById(R.id.buttonCancelar);
 
@@ -98,7 +101,7 @@ public class newService extends AppCompatActivity {
                                 Toast.makeText(newService.this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
                             });
                         } else {
-                            consumerService.registerNewConsumer(strClientName, strEquipment, strTelephone);
+                            consumerService.registerNewConsumer(strClientName, strEquipment, strTelephone, selectedImagePath);
                             mainHandler.post(() -> {
                                 UiUtils.clearFields(clientName, equipment, telephone);
                                 Toast.makeText(newService.this, "Serviço cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
@@ -113,5 +116,41 @@ public class newService extends AppCompatActivity {
                 });
             }
         });
+
+        Button selectImageButton = findViewById(R.id.buttonSelectImage);
+        ButtonAnimationUtil.setAnimation(
+                selectImageButton,
+                R.anim.button,
+                R.color.success,
+                R.color.background_color_btn  // cor normal
+        );
+        selectImageButton.setOnClickListener(v -> openImageSelector());
+    }
+
+    private void openImageSelector() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selectedImageUri = data.getData();
+            selectedImagePath = getPathFromUri(selectedImageUri);
+        }
+    }
+
+    private String getPathFromUri(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(projection[0]);
+            String path = cursor.getString(columnIndex);
+            cursor.close();
+            return path;
+        }
+        return uri.getPath();
     }
 }
