@@ -49,8 +49,8 @@ public class newService extends AppCompatActivity {
         setContentView(R.layout.activity_new_service);
 
         clientName = findViewById(R.id.textInputEditText);
-        equipment = findViewById(R.id.textInputEditText2);
-        telephone = findViewById(R.id.textInputEditText3);
+        equipment = findViewById(R.id.textInputEditText3);
+        telephone = findViewById(R.id.textInputEditText2);
         Button registerButton = findViewById(R.id.buttonCadastrar);
         ConsumerRepository consumerRepository = new ConsumerRepository(this);
         consumerService = new ConsumerService(consumerRepository);
@@ -95,12 +95,20 @@ public class newService extends AppCompatActivity {
                         String strTelephone = telephone.getText().toString();
 
                         boolean anyFieldIsEmpty = strClientName.isEmpty() || strEquipment.isEmpty() || strTelephone.isEmpty();
+                        showErrorInField(anyFieldIsEmpty);
 
-                        if (anyFieldIsEmpty) {
+
+                       if (!strTelephone.matches("\\d+")) {
                             mainHandler.post(() -> {
-                                Toast.makeText(newService.this, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT).show();
+                                setMessageErrorOnField(telephone,"Por favor, preencha o campo de telefone apenas com números");
                             });
-                        } else {
+                        }
+                        else if (strTelephone.length() < 11) {
+                            mainHandler.post(() -> {
+                               setMessageErrorOnField(telephone, "Por favor, preencha o campo de telefone com 11 dígitos");
+                            });
+                        }
+                        else {
                             consumerService.registerNewConsumer(strClientName, strEquipment, strTelephone, selectedImagePath);
                             mainHandler.post(() -> {
                                 UiUtils.clearFields(clientName, equipment, telephone);
@@ -161,5 +169,32 @@ public class newService extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
         finish();
+    }
+
+    protected void setMessageErrorOnField(EditText field, String message) {
+        field.setError(message);
+    }
+
+    private void showErrorInField(boolean haveEmptyFields) {
+
+        if(haveEmptyFields) {
+            if (clientName.getText().toString().isEmpty()) {
+                mainHandler.post(() -> {
+                    setMessageErrorOnField(clientName, "Por favor, preencha o campo de nome");
+                });
+            }
+
+            if (equipment.getText().toString().isEmpty()) {
+                mainHandler.post(() -> {
+                    setMessageErrorOnField(equipment, "Por favor, preencha o campo de equipamento");
+                });
+            }
+
+            if (telephone.getText().toString().isEmpty()) {
+                mainHandler.post(() -> {
+                    setMessageErrorOnField(telephone, "Por favor, preencha o campo de telefone");
+                });
+            }
+        }
     }
 }
