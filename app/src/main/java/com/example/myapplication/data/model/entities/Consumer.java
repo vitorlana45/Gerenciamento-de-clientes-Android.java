@@ -14,15 +14,16 @@ public class Consumer {
     private String equipment;
     private String contactNumber;
     private long dateInMillis;
-
+    private String photoPath;
     public Consumer() { }
 
     @Ignore
-    public Consumer(String name, String equipment, String contactNumber, long dateInMillis) {
+    public Consumer(String name, String equipment, String contactNumber, long dateInMillis, String photoPath) {
         this.name = name;
         this.equipment = equipment;
         this.contactNumber = contactNumber;
         this.dateInMillis = dateInMillis;
+        this.photoPath = photoPath;
     }
 
     // Getters e Setters
@@ -40,4 +41,8 @@ public class Consumer {
 
     public long getDateInMillis() { return dateInMillis; }
     public void setDateInMillis(long dateInMillis) { this.dateInMillis = dateInMillis; }
+
+    public String getPhotoPath() { return photoPath; }
+
+    public void setPhotoPath(String photoPath) {this.photoPath = photoPath;}
 }
