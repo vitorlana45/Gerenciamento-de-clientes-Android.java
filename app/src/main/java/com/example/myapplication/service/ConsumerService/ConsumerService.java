@@ -5,6 +5,8 @@ import android.util.Log;
 import com.example.myapplication.data.model.entities.Consumer;
 import com.example.myapplication.data.repositories.ConsumerRepository;
 
+import java.util.List;
+
 public class ConsumerService {
 
     private final ConsumerRepository consumerRepository;
