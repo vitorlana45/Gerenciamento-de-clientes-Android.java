@@ -45,6 +45,26 @@ public class Home3Activity extends AppCompatActivity {
                 }
             }
         });
+
+        Button padingServiceButton = findViewById(R.id.btn_servicos_pendentes);
+        ButtonAnimationUtil.setAnimation(
+                padingServiceButton,
+                R.anim.button,
+                R.color.success,
+                R.color.background_color_btn
+        );
+        padingServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(Home3Activity.this, PendingServiceActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    Log.e("Home3Activity", "Error starting PendingServiceActivity", e);
+                }
+            }
+        });
     }
 
     @Override

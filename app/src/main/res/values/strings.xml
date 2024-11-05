@@ -59,14 +59,15 @@
     <string name="app_home_garantia">Garantia</string>
     <string name="app_home_description_logo">Logo de uma Chave de fenda com uma chave inglesa</string>
 
-<!--    recursos da pagian cadastrar servico -->
+    <!--    recursos da pagian cadastrar servico -->
 
     <string name="app_btn_cadastrar_servico">CADASTRAR</string>
     <string name="app_label_nome_cliente">Nome do Cliente</string>
     <string name="app_label_equipamento">Equipamento</string>
     <string name="app_label_telefone">Telefone</string>
     <string name="app_label_titulo">Insira os dados do cliente</string>
-<!--    preciso de labels padrao para os campos de texto nome do cliente, equipamento, telefone -->-->
+    <!--    preciso de labels padrao para os campos de texto nome do cliente, equipamento, telefone -->
+    -->
     <string name="app_label_hint_cliente">jose</string>"
     <string name="app_label_hint_equipamento">TV</string>"
     <string name="app_label_hint_telefone">11-9 9292-9292</string>"
