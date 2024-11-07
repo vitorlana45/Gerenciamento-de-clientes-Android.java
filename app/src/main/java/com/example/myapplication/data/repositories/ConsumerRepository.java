@@ -36,8 +36,12 @@ public class ConsumerRepository {
     public Consumer getConsumerById(int consumerId) {
         return consumerDao.getConsumerById(consumerId);
     }
+    public List<Consumer> getAllConsumersByStatus(String status) {
+        return consumerDao.getAllConsumersByStatus(status);
+    }
 
     public Consumer getConsumerByName(String name) {
         return consumerDao.getConsumerByName(name);
     }
+
 }

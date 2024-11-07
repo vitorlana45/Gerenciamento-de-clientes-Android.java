@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -21,12 +20,13 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.FinishServiceActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.data.adpter.ConsumerAdapter;
 import com.example.myapplication.data.model.entities.Consumer;
+import com.example.myapplication.data.model.enums.Status;
 import com.example.myapplication.data.repositories.ConsumerRepository;
 import com.example.myapplication.databinding.ActivityPendingServiceBinding;
+import com.example.myapplication.ui.Utils.ButtonAnimationUtil;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -41,8 +41,6 @@ public class PendingServiceActivity extends AppCompatActivity {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     private final Handler mainHandler = new Handler();
     private ConsumerAdapter consumerAdapter;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

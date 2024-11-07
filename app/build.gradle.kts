@@ -43,6 +43,7 @@ dependencies {
     //is is the easiest solution and allows you to use the Instant class directly.
     implementation (libs.threetenabp) // Latest version
 
+    implementation (libs.material.v1120)
     // Dependências do Room
     implementation (libs.gson)
     implementation(libs.androidx.room.runtime)

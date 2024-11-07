@@ -4,6 +4,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.myapplication.data.model.enums.Status;
+
 @Entity(tableName = "consumer")
 public class Consumer {
 
@@ -16,17 +18,18 @@ public class Consumer {
     private long createdAt;
     private long exitAt;
     private String photoPath;
-
+    private Status status;
 
     public Consumer() { }
 
     @Ignore
-    public Consumer(String name, String equipment, String contactNumber, long createdAt, String photoPath) {
+    public Consumer(String name, String equipment, String contactNumber, long createdAt, String photoPath, Status status) {
         this.name = name;
         this.equipment = equipment;
         this.contactNumber = contactNumber;
         this.createdAt = createdAt;
         this.photoPath = photoPath;
+        this.status = status;
     }
 
     // Getters e Setters
@@ -52,4 +55,8 @@ public class Consumer {
     public String getPhotoPath() { return photoPath; }
 
     public void setPhotoPath(String photoPath) { this.photoPath = photoPath;}
+
+    public Status getStatus() { return status; }
+
+    public void setStatus(Status status) { this.status = status; }
 }

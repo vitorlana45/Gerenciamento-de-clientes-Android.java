@@ -22,7 +22,7 @@ public abstract class ConsumerDatabase extends RoomDatabase {
             synchronized (ConsumerDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), ConsumerDatabase.class, "consumer_database")
-                            // .fallbackToDestructiveMigration() // Descomente se quiser permitir migrações destrutivas
+                             .fallbackToDestructiveMigration() // Descomente se quiser permitir migrações destrutivas
                             .build();
                 }
             }

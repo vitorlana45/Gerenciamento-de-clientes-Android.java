@@ -11,7 +11,7 @@ import com.example.myapplication.data.databaseUtils.Converters;
 import com.example.myapplication.data.model.ConsumerDao;
 import com.example.myapplication.data.model.entities.Consumer;
 
-@Database(entities = {Consumer.class}, version = 6, exportSchema = false)
+@Database(entities = {Consumer.class}, version = 8, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase instance;

@@ -1,0 +1,1 @@
+# importante sempre lembrar de alterar a versao do banco de dados após alterações na entidade

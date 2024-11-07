@@ -20,6 +20,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.myapplication.R;
+import com.example.myapplication.data.model.enums.Status;
 import com.example.myapplication.data.repositories.ConsumerRepository;
 import com.example.myapplication.service.ConsumerService.ConsumerService;
 import com.example.myapplication.ui.Utils.ButtonAnimationUtil;

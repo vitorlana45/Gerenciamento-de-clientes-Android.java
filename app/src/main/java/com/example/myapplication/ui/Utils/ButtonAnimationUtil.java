@@ -31,6 +31,7 @@ public class ButtonAnimationUtil {
                         button.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(button.getContext(), colorPressed))); // Altera a cor ao pressionar
                         break;
                     case MotionEvent.ACTION_UP:
+                    case MotionEvent.ACTION_CANCEL:
                         v.clearAnimation();
                         button.setBackgroundTintList(colorStateList); // Restaura a cor normal
                         break;
